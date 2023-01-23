@@ -16,8 +16,9 @@ class NumberCalculator {
         return $this->accumulatorProduct;
     }
 
-    public function calculateAverage():int {
-        return $this->accumulatorSum / $this->numberCount;
+    public function calculateAverage():float {
+        $avg = $this->accumulatorSum / $this->numberCount;
+        return ceil($avg);
     }
 }
 /*
