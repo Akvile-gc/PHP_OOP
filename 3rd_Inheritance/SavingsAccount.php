@@ -23,9 +23,8 @@ class SavingsAccount extends BankAccount{
     public function addInterest (float $interestPercentage):void
     {
         $currentBalance = parent::getBalance();
-        $this->interest = round($currentBalance * $interestPercentage); // ar naudoti intval, ar round?
+        $this->interest = intval(round($currentBalance * $interestPercentage));
         $this->deposit($this->interest);
-//        parent::deposit($this->interest);
     }
 }
 
