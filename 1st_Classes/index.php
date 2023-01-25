@@ -24,6 +24,7 @@ $numberCalculator = new NumberCalculator();
 require './todo/todoService.php';
 require './todo/CodeDataService.php';
 require './todo/StoreDataService.php';
+
 $storeDataService = new StoreDataService('./todo/test.txt');
 $codeDataService = new CodeDataService();
 $todo = new Todo($codeDataService, $storeDataService);
@@ -33,6 +34,10 @@ if (count($argv) == 1){
 }
 
 $operation = $argv[1];
+if ($operation == 'add'){
+    $todoAll = $todo->add('hello');
+}
+
 if ($operation == 'list'){
     $todoAll = $todo->list();
     foreach ($todoAll as $id => $todo){
@@ -41,7 +46,6 @@ if ($operation == 'list'){
         echo $todo['task'] . PHP_EOL;
     }
 }
-
 /* ------------------------------------------------------------------------
 php -f todoService.php add "nuplauti automobilų" "2022-03-29 15:00"
 todo added!
