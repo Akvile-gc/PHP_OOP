@@ -1,1 +1,4 @@
 Validation error: Password must be at least 10 symbols long
+Validation error: Password must include at least 2 special symbols
+Validation error: Password must include at least 1 Capital and 1 lower cap letter
+Validation error: Password must include at least 1 number
