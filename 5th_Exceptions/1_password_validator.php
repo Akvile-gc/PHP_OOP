@@ -58,28 +58,28 @@ class PasswordValidator
 try {
     $password = new PasswordValidator($argv[1]);
     $password->passwordLength();
-    echo 'Password is valid' . PHP_EOL;
+    return 'Length is valid';
 } catch (Exception $exception){
     file_put_contents('./errors.txt', 'Validation error: ' . $exception->getMessage() . PHP_EOL, FILE_APPEND);
 }
 
 try {
     $password->specialSymbols();
-    echo 'Password is valid' . PHP_EOL;
+    return 'Symbols are valid';
 } catch (Exception $exception){
     file_put_contents('./errors.txt', 'Validation error: ' . $exception->getMessage() . PHP_EOL, FILE_APPEND);
 }
 
 try {
     $password->passwordLetters();
-    echo 'Password is valid' . PHP_EOL;
+    return 'Letters are valid';
 } catch (Exception $exception){
     file_put_contents('./errors.txt', 'Validation error: ' . $exception->getMessage() . PHP_EOL, FILE_APPEND);
 }
 
 try {
     $password->passwordNumbers();
-    echo 'Password is valid' . PHP_EOL;
+    return 'Numbers are valid';
 } catch (Exception $exception){
     file_put_contents('./errors.txt', 'Validation error: ' . $exception->getMessage() . PHP_EOL, FILE_APPEND);
 } finally {
