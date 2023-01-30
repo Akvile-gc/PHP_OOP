@@ -2,6 +2,92 @@
 
 declare(strict_types=1);
 
+class InventoryChecker
+{
+    public function matchingData(DataEntered $dataEntered, GettingDataFromFile $dataFromFile)
+    {
+        foreach ($dataEntered->explodeInItems() as $item){
+            if (preg_match($item[0]), $dataFromFile->getInfo()){
+
+            }
+
+        }
+
+        if ($dataEntered->explodeToID() === $dataFromFile){
+            echo 'Hi';
+        } else {
+            echo 'This is wrong';
+        }
+    }
+}
+class DataEntered
+{
+    protected string $entered;
+    public function __construct(string $data)
+    {
+        $this->entered = $data;
+    }
+
+    public function explodeInItems()
+    {
+        return explode(',', $this->entered);
+    }
+
+    public function explodeInElements()
+    {
+        foreach ($this->explodeInItems() as $item){
+            return explode(':', $item);
+        }
+    }
+//    public function explodeToID()
+//    {
+//        $inventoryItem = explode(',', $this->entered);
+//
+//        foreach ($inventoryItem as $item){
+//            $inventory = explode(':', $item);
+//            return $inventory[0];
+//        }
+//    }
+
+//    public function explodeToQuantity()
+//    {
+//        $inventoryItem = explode(',', $this->entered);
+//
+//        foreach ($inventoryItem as $item){
+//            $inventory = explode(':', $item);
+//            return $inventory[1];
+//        }
+//    }
+}
+
+class GettingDataFromFile
+{
+    protected string $file;
+
+    public function __construct(string $file)
+    {
+        $this->file = $file;
+    }
+    public function getInfo()
+    {
+        $data = file_get_contents($this->file);
+        $deserializedData = json_decode($data, true);
+        return $deserializedData;
+//        foreach ($deserializedData as $inventoryItem){
+//            return $inventoryItem['product_id'];
+//        }
+    }
+}
+
+$inventory = new DataEntered($argv[1]);
+$inventory->explodeInElements();
+
+$data = new GettingDataFromFile('./inventory.json');
+//$data->getInfo();
+
+$test = new InventoryChecker();
+//$test->matchingData($inventory, $data);
+
 /*
 2.1 Parašykite įrankį inventoriaus tikrinimui. Inventorių rasite faile "./inventory.json"
 Programa turėtų veikti paduodant jai produkto id ir kiekio poras, atskirtas dvitaškiu. Pačios poros atskirtos kableliais:
