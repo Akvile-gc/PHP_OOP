@@ -2,22 +2,13 @@
 
 declare(strict_types=1);
 
+class InventoryException extends \Exception {}
+
 class InventoryChecker
 {
     public function matchingData(DataEntered $dataEntered, GettingDataFromFile $dataFromFile)
     {
-        foreach ($dataEntered->explodeInItems() as $item){
-            if (preg_match($item[0]), $dataFromFile->getInfo()){
 
-            }
-
-        }
-
-        if ($dataEntered->explodeToID() === $dataFromFile){
-            echo 'Hi';
-        } else {
-            echo 'This is wrong';
-        }
     }
 }
 class DataEntered
@@ -39,25 +30,6 @@ class DataEntered
             return explode(':', $item);
         }
     }
-//    public function explodeToID()
-//    {
-//        $inventoryItem = explode(',', $this->entered);
-//
-//        foreach ($inventoryItem as $item){
-//            $inventory = explode(':', $item);
-//            return $inventory[0];
-//        }
-//    }
-
-//    public function explodeToQuantity()
-//    {
-//        $inventoryItem = explode(',', $this->entered);
-//
-//        foreach ($inventoryItem as $item){
-//            $inventory = explode(':', $item);
-//            return $inventory[1];
-//        }
-//    }
 }
 
 class GettingDataFromFile
@@ -73,20 +45,25 @@ class GettingDataFromFile
         $data = file_get_contents($this->file);
         $deserializedData = json_decode($data, true);
         return $deserializedData;
-//        foreach ($deserializedData as $inventoryItem){
-//            return $inventoryItem['product_id'];
-//        }
+
     }
 }
 
 $inventory = new DataEntered($argv[1]);
-$inventory->explodeInElements();
+//$inventory->explodeInElements();
 
 $data = new GettingDataFromFile('./inventory.json');
-//$data->getInfo();
+$data->getInfo();
 
-$test = new InventoryChecker();
-//$test->matchingData($inventory, $data);
+
+try {
+    $test = new InventoryChecker();
+    $test->matchingData($inventory, $data);
+    echo 'all products have the requested quantity in stock' . PHP_EOL;
+} catch (Exception $exception){
+    echo $exception->getMessage();
+}
+
 
 /*
 2.1 Parašykite įrankį inventoriaus tikrinimui. Inventorių rasite faile "./inventory.json"
