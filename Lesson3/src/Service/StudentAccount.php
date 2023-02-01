@@ -1,6 +1,7 @@
 <?php
+namespace Lesson3\Service;
 
-require '1_bank_account.php';
+//require 'BankAccounts.php';
 class StudentAccount extends BankAccount {
 
     public function deposit(int $amount): void

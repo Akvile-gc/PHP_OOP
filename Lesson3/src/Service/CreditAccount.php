@@ -1,5 +1,8 @@
 <?php
-require '1_bank_account.php';
+//require 'BankAccounts.php';
+
+namespace Lesson3\Service;
+
 class CreditAccount extends BankAccount {
 
     protected int $maxCreditAmount;

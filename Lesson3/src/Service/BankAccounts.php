@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace Lesson3\Service;
+
 class BankAccount
 {
     protected int $balance;

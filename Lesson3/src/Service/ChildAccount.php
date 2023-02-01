@@ -1,6 +1,7 @@
 <?php
 
-require '1_bank_account.php';
+//require 'BankAccounts.php';
+namespace Lesson3\Service;
 
 class ChildAccount extends BankAccount {
     public function spend(int $amount): void

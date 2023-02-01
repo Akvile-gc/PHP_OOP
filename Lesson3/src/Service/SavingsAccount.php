@@ -1,5 +1,6 @@
 <?php
-require '1_bank_account.php';
+//require 'BankAccounts.php';
+namespace Lesson3\Service;
 class SavingsAccount extends BankAccount{
     protected float $interest;
     public function __construct(int $balance = 0, float $interest = 0)
