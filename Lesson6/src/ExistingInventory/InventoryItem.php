@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-namespace Lesson6\ExistingInventory;
+namespace Lesson6\src\ExistingInventory;
 class InventoryItem
 {
     protected int $id;

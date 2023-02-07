@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-namespace Lesson6\NewData;
+namespace Lesson6\src\NewData;
 class DataEntered
 {
     protected int $id;

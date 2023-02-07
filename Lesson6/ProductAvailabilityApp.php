@@ -2,11 +2,11 @@
 declare(strict_types=1);
 namespace Lesson6;
 
-use Lesson6\Availability\AvailableInventory;
-use Lesson6\Availability\InventoryException;
-use Lesson6\ExistingInventory\ExistingInventoryGetter;
-use Lesson6\Logging\Logger;
-use Lesson6\NewData\DataEnteredSplit;
+use Lesson6\src\Availability\AvailableInventory;
+use Lesson6\src\Availability\InventoryException;
+use Lesson6\src\ExistingInventory\ExistingInventoryGetter;
+use Lesson6\src\Logging\Logger;
+use Lesson6\src\NewData\DataEnteredSplit;
 
 class ProductAvailabilityApp
 {

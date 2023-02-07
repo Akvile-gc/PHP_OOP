@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Lesson6\Utils;
+namespace Lesson6\src\Utils;
 class JsonCoder
 {
     public function decodeJson(string $input):array {

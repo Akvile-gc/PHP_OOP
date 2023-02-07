@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Lesson6\Availability;
-use Lesson6\NewData\DataEntered;
+namespace Lesson6\src\Availability;
+use Lesson6\src\NewData\DataEntered;
 
 class AvailableInventory
 {

@@ -1,8 +1,8 @@
 <?php
 
 declare(strict_types=1);
-namespace Lesson6\ExistingInventory;
-use Lesson6\Utils\JsonCoder;
+namespace Lesson6\src\ExistingInventory;
+use Lesson6\src\Utils\JsonCoder;
 
 class ExistingInventoryGetter
 {
