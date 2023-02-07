@@ -3,11 +3,13 @@
 declare(strict_types=1);
 
 namespace Lesson6\Availability;
+use Lesson6\NewData\DataEntered;
+
 class AvailableInventory
 {
-    public function checkAvailability(DataEntered $data, array $inventory):void
+    public function checkAvailability(DataEntered $dataEntered, array $inventory):void
     {
-        $newId = $data->getId();
+        $newId = $dataEntered->getId();
         $existingItem = null;
 
         foreach ($inventory as $item) {
@@ -18,12 +20,12 @@ class AvailableInventory
         }
 
         if ($existingItem === null) {
-            throw new Exception("product \"$newId\" is not in the inventory");
+            throw new InventoryException("product \"$newId\" is not in the inventory");
         }
 
-        if ($data->getQuantity() > $existingItem->getQuantity()) {
+        if ($dataEntered->getQuantity() > $existingItem->getQuantity()) {
             $quantity = $existingItem->getQuantity();
-            throw new Exception("product \"$newId\" only has \"$quantity\" items in the inventory");
+            throw new InventoryException("product \"$newId\" only has \"$quantity\" items in the inventory");
         }
 
     }

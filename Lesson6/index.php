@@ -6,19 +6,21 @@ use Lesson6\Availability\AvailableInventory;
 use Lesson6\ExistingInventory\ExistingInventoryConverter;
 use Lesson6\ExistingInventory\ExistingInventoryGetter;
 use Lesson6\ExistingInventory\ExistingInventoryReader;
-use Lesson6\ExistingInventory\InventoryItem;
-use Lesson6\NewData\DataEntered;
+use Lesson6\Logging\Logger;
 use Lesson6\NewData\DataEnteredSplit;
+use Lesson6\ProductAvailabilityApp;
 use Lesson6\Utils\JsonCoder;
-use Lesson6\Utils\Logger;
 
 
-spl_autoload_register(function ($fqcn) {
-    $withoutProject = preg_replace('/^Lesson6\\\\/', '', $fqcn);
-    require $withoutProject . '.php';
+spl_autoload_register(function ($className) {
+    $withoutProject = preg_replace('/^Lesson6\\\\/', '', $className);
+    $filePath = str_replace('\\', '/', $withoutProject) . '.php';
+    require $filePath;
 });
 
+
 $split = new DataEnteredSplit();
+
 $inventoryReader = new ExistingInventoryReader();
 $jsonCoder = new JsonCoder();
 $converter = new ExistingInventoryConverter();

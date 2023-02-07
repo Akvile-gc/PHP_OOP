@@ -2,6 +2,12 @@
 declare(strict_types=1);
 namespace Lesson6;
 
+use Lesson6\Availability\AvailableInventory;
+use Lesson6\Availability\InventoryException;
+use Lesson6\ExistingInventory\ExistingInventoryGetter;
+use Lesson6\Logging\Logger;
+use Lesson6\NewData\DataEnteredSplit;
+
 class ProductAvailabilityApp
 {
     public function __construct(
@@ -21,7 +27,7 @@ class ProductAvailabilityApp
             $this->availability->checkAvailabilityForAll($queries, $inventory);
             $this->logger->logMessage('All products have the requested quantity in stock');
         }
-        catch (Exception $e){
+        catch (InventoryException $e){
             $this->logger->logMessage($e->getMessage());
         }
     }

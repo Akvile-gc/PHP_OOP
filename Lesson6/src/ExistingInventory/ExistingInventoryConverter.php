@@ -12,7 +12,7 @@ class ExistingInventoryConverter
             $existingInventory[] = new InventoryItem(
                 $unsortedItem['product_id'],
                 $unsortedItem['name'],
-                $unsortedItem['quantity'],
+                $unsortedItem['quantity']
             );
         }
         return $existingInventory;

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 namespace Lesson6\ExistingInventory;
+use Lesson6\Utils\JsonCoder;
+
 class ExistingInventoryGetter
 {
     protected ExistingInventoryReader $reader;
@@ -15,9 +17,9 @@ class ExistingInventoryGetter
         $this->converter = $converter;
     }
 
-    /**
-     * @return InventoryItem[]
-     */
+//    /**
+//     * @return InventoryItem[]
+//     */
 
     public function getExistingInventory():array
     {

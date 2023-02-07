@@ -5,6 +5,6 @@ class ExistingInventoryReader
 {
     public function readInfo():string
     {
-        return file_get_contents('../inventory.json');
+        return file_get_contents('./inventory.json');
     }
 }

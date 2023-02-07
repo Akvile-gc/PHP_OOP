@@ -7,7 +7,7 @@ class DataEnteredSplit
 {
     public function explode(string $input):array
     {
-        if ($input === '')
+        if ($input == '')
             return [];
 
         $inputItems = explode(',', $input);
@@ -15,7 +15,9 @@ class DataEnteredSplit
 
         foreach ($inputItems as $item){
             $unsortedData = explode(':', $item);
-            $newData = new DataEntered((int)$unsortedData[0], (int)$unsortedData[1]);
+            $id = (int)$unsortedData[0];
+            $quantity = (int)$unsortedData[1];
+            $newData = new DataEntered($id, $quantity);
             $enteredData[] = $newData;
         }
 
