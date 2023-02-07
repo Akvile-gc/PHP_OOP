@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+//spl_autoload_register(function ($className) {
+//    $withoutProject = preg_replace('/^Lesson6\\\\/', '', $className);
+//    $filePath = str_replace('\\', '/', $withoutProject) . '.php';
+//    require $filePath;
+//});
+
+spl_autoload_register(function ($className){
+    $classWithoutPrefix=str_replace('Lesson6\\', '', $className);
+    require $classWithoutPrefix.'.php';
+});
+
 use Lesson6\Availability\AvailableInventory;
 use Lesson6\ExistingInventory\ExistingInventoryConverter;
 use Lesson6\ExistingInventory\ExistingInventoryGetter;
@@ -10,14 +21,6 @@ use Lesson6\Logging\Logger;
 use Lesson6\NewData\DataEnteredSplit;
 use Lesson6\ProductAvailabilityApp;
 use Lesson6\Utils\JsonCoder;
-
-
-spl_autoload_register(function ($className) {
-    $withoutProject = preg_replace('/^Lesson6\\\\/', '', $className);
-    $filePath = str_replace('\\', '/', $withoutProject) . '.php';
-    require $filePath;
-});
-
 
 $split = new DataEnteredSplit();
 
