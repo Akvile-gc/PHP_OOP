@@ -1,0 +1,12 @@
+{
+    "name": "akvile/lesson8composer",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Lesson8composer\\": "src/"
+        }
+    },
+    "require": {
+        "monolog/monolog": "^3.3"
+    }
+}
