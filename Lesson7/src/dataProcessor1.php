@@ -95,9 +95,9 @@ class CvsEncoder implements DataEncoderInterface{
     {
         // TODO: Implement encode() method.
         $result = 'Type,Items'.PHP_EOL;
-        foreach ($format as $item){
-            $result .= $item['type'] . '.';
-            $result .= count($item['items']) . '.';
+        foreach ($format as $item) {
+            $result .= $item['type'] . ',';
+            $result .= count($item['items']) . ',';
             $result .= PHP_EOL;
         }
         return $result;
@@ -119,7 +119,7 @@ class FileOutputHandler implements DataOutputHandlerInterface
 {
     public function output(string $data): void
     {
-        file_put_contents("./processedData.txt", $data);
+        file_put_contents("./processedData.txt", $data, FILE_APPEND);
     }
 }
 
@@ -127,6 +127,7 @@ class DataProcessor
 {
     public function __construct(private array $data)
         {
+            $this->data = $data;
         }
 
     public function process(DataEncoderInterface $encoder, DataOutputHandlerInterface $outputWriter): void{
@@ -142,8 +143,8 @@ $terminalWriter = new TerminalOutputHandler();
 $fileWriter = new FileOutputHandler();
 
 $dataProcessor = new DataProcessor($categories);
-$dataProcessor->process($jsonEncoder, $fileWriter);
-$dataProcessor->process($jsonEncoder, $terminalWriter);
+//$dataProcessor->process($jsonEncoder, $fileWriter);
+//$dataProcessor->process($jsonEncoder, $terminalWriter);
 $dataProcessor->process($csvEncoder, $fileWriter);
 $dataProcessor->process($csvEncoder, $terminalWriter);
 
