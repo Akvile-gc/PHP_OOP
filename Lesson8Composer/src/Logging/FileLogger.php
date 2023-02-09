@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Lesson8Composer\src\Logging;
+namespace Lesson8Composer\Logging;
 class FileLogger extends Logger
 {
     public function logMessage(string $message)

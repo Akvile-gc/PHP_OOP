@@ -1,12 +1,10 @@
 {
-    "name": "akvile/lesson8composer",
+    "name": "akvile/inventory-checker",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Lesson8composer\\": "src/"
+            "Lesson8Composer\\": "src/"
         }
     },
-    "require": {
-        "monolog/monolog": "^3.3"
-    }
+    "require": {}
 }

@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Lesson8Composer\src\Availability;
-use Lesson8Composer\src\NewData\DataEntered;
+namespace Lesson8Composer\Availability;
+use Lesson8Composer\NewData\DataEntered;
 
 class AvailableInventory
 {

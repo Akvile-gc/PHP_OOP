@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-namespace Lesson8Composer\src\NewData;
+namespace Lesson8Composer\NewData;
 class DataEntered
 {
     protected int $id;

@@ -2,11 +2,11 @@
 declare(strict_types=1);
 namespace Lesson8Composer;
 
-use Lesson8Composer\src\Availability\AvailableInventory;
-use Lesson8Composer\src\Availability\InventoryException;
-use Lesson8Composer\src\ExistingInventory\ExistingInventoryGetter;
-use Lesson8Composer\src\Logging\Logger;
-use Lesson8Composer\src\NewData\DataEnteredSplit;
+use Lesson8Composer\Availability\AvailableInventory;
+use Lesson8Composer\Availability\InventoryException;
+use Lesson8Composer\ExistingInventory\ExistingInventoryGetter;
+use Lesson8Composer\Logging\Logger;
+use Lesson8Composer\NewData\DataEnteredSplit;
 
 class ProductAvailabilityApp
 {

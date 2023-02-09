@@ -2,26 +2,16 @@
 
 declare(strict_types=1);
 
-//spl_autoload_register(function ($className) {
-//    $withoutProject = preg_replace('/^Lesson6\\\\/', '', $className);
-//    $filePath = str_replace('\\', '/', $withoutProject) . '.php';
-//    require $filePath;
-//});
-//spl_autoload_register(function ($className){
-//    $classWithoutPrefix=str_replace('Lesson8Composer\\', '', $className);
-//    require $classWithoutPrefix.'.php';
-//});
+require './../vendor/autoload.php';
 
-require_once './vendor/autoload.php';
-
-use Lesson8Composer\src\Availability\AvailableInventory;
-use Lesson8Composer\src\ExistingInventory\ExistingInventoryConverter;
-use Lesson8Composer\src\ExistingInventory\ExistingInventoryGetter;
-use Lesson8Composer\src\ExistingInventory\ExistingInventoryReader;
-use Lesson8Composer\src\Logging\Logger;
-use Lesson8Composer\src\NewData\DataEnteredSplit;
+use Lesson8Composer\Availability\AvailableInventory;
+use Lesson8Composer\ExistingInventory\ExistingInventoryConverter;
+use Lesson8Composer\ExistingInventory\ExistingInventoryGetter;
+use Lesson8Composer\ExistingInventory\ExistingInventoryReader;
+use Lesson8Composer\Logging\Logger;
+use Lesson8Composer\NewData\DataEnteredSplit;
 use Lesson8Composer\ProductAvailabilityApp;
-use Lesson8Composer\src\Utils\JsonCoder;
+use Lesson8Composer\Utils\JsonCoder;
 
 $split = new DataEnteredSplit();
 
@@ -34,6 +24,7 @@ $availability = new AvailableInventory();
 $logger = new Logger();
 
 $app = new ProductAvailabilityApp($split, $inventoryGetter, $availability, $logger);
+
 $app->execute($argv);
 
 

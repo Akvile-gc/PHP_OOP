@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-namespace Lesson8Composer\src\ExistingInventory;
+namespace Lesson8Composer\ExistingInventory;
 class ExistingInventoryConverter
 {
     public function convert(array $unsortedInventory):array

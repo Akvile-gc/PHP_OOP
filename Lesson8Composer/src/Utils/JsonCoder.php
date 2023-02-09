@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Lesson8Composer\src\Utils;
+namespace Lesson8Composer\Utils;
 class JsonCoder
 {
     public function decodeJson(string $input):array {
