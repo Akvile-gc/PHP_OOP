@@ -1,7 +1,9 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Lesson8Composer\ExistingInventory;
+
 class InventoryItem
 {
     protected int $id;
@@ -15,17 +17,17 @@ class InventoryItem
         $this->quantity = $quantity;
     }
 
-    public function getId():int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getQuantity():int
+    public function getQuantity(): int
     {
         return $this->quantity;
     }

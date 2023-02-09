@@ -9,6 +9,7 @@ use Lesson8Composer\ExistingInventory\ExistingInventoryConverter;
 use Lesson8Composer\ExistingInventory\ExistingInventoryGetter;
 use Lesson8Composer\ExistingInventory\ExistingInventoryReader;
 use Lesson8Composer\Logging\Logger;
+use Lesson8Composer\Logging\MonologLogger;
 use Lesson8Composer\NewData\DataEnteredSplit;
 use Lesson8Composer\ProductAvailabilityApp;
 use Lesson8Composer\Utils\JsonCoder;
@@ -21,8 +22,8 @@ $converter = new ExistingInventoryConverter();
 $inventoryGetter = new ExistingInventoryGetter($inventoryReader, $jsonCoder, $converter);
 
 $availability = new AvailableInventory();
-$logger = new Logger();
-
+//$logger = new Logger();
+$logger = new MonologLogger();
 $app = new ProductAvailabilityApp($split, $inventoryGetter, $availability, $logger);
 
 $app->execute($argv);

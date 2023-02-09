@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Lesson8Composer;
 
 use Lesson8Composer\Availability\AvailableInventory;
@@ -15,8 +17,8 @@ class ProductAvailabilityApp
         protected ExistingInventoryGetter $getInventory,
         protected AvailableInventory $availability,
         protected Logger $logger
-    )
-    {}
+    ) {
+    }
 
     public function execute(array $arguments)
     {
@@ -26,8 +28,7 @@ class ProductAvailabilityApp
         try {
             $this->availability->checkAvailabilityForAll($queries, $inventory);
             $this->logger->logMessage('All products have the requested quantity in stock');
-        }
-        catch (InventoryException $e){
+        } catch (InventoryException $e) {
             $this->logger->logMessage($e->getMessage());
         }
     }

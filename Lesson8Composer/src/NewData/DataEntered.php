@@ -1,7 +1,9 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Lesson8Composer\NewData;
+
 class DataEntered
 {
     protected int $id;
@@ -12,11 +14,13 @@ class DataEntered
         $this->quantity = $quantity;
     }
 
-    public function getId():int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
-    public function getQuantity():int {
+    public function getQuantity(): int
+    {
         return $this->quantity;
     }
 }

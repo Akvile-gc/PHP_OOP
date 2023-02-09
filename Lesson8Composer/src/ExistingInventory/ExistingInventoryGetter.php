@@ -1,7 +1,9 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Lesson8Composer\ExistingInventory;
+
 use Lesson8Composer\Utils\JsonCoder;
 
 class ExistingInventoryGetter
@@ -21,7 +23,7 @@ class ExistingInventoryGetter
 //     * @return InventoryItem[]
 //     */
 
-    public function getExistingInventory():array
+    public function getExistingInventory(): array
     {
         $existingInventory = $this->reader->readInfo();
         $unsortedInventory = $this->coder->decodeJson($existingInventory);

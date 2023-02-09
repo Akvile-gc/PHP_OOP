@@ -6,5 +6,8 @@
             "Lesson8Composer\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "monolog/monolog": "^3.3",
+        "friendsofphp/php-cs-fixer": "^3.14"
+    }
 }
