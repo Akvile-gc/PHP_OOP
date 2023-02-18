@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 namespace Lesson10DI\Availability;
-
 use Lesson10DI\NewData\DataEntered;
 
 class AvailableInventory
 {
-    public function checkAvailability(DataEntered $dataEntered, array $inventory): void
+    public function checkAvailability(DataEntered $dataEntered, array $inventory):void
     {
         $newId = $dataEntered->getId();
         $existingItem = null;
@@ -28,11 +27,13 @@ class AvailableInventory
             $quantity = $existingItem->getQuantity();
             throw new InventoryException("product \"$newId\" only has \"$quantity\" items in the inventory");
         }
+
     }
-    public function checkAvailabilityForAll(array $queries, array $inventory): void
+    public function checkAvailabilityForAll(array $queries, array $inventory):void
     {
-        foreach ($queries as $query) {
+        foreach ($queries as $query){
             $this->checkAvailability($query, $inventory);
         }
     }
 }
+

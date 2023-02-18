@@ -8,19 +8,22 @@ declare(strict_types=1);
 //    require $filePath;
 //});
 
-spl_autoload_register(function ($className){
-    $classWithoutPrefix=str_replace('Lesson10DI\\', '', $className);
-    require $classWithoutPrefix.'.php';
-});
 
-use Lesson10DI\src\Availability\AvailableInventory;
-use Lesson10DI\src\ExistingInventory\ExistingInventoryConverter;
-use Lesson10DI\src\ExistingInventory\ExistingInventoryGetter;
-use Lesson10DI\src\ExistingInventory\ExistingInventoryReader;
-use Lesson10DI\src\Logging\Logger;
-use Lesson10DI\src\NewData\DataEnteredSplit;
+require 'vendor/autoload.php';
+
+//spl_autoload_register(function ($className){
+//    $classWithoutPrefix=str_replace('Lesson10DI-wrong\\', '', $className);
+//    require $classWithoutPrefix.'.php';
+//});
+
+use Lesson10DI\Availability\AvailableInventory;
+use Lesson10DI\ExistingInventory\ExistingInventoryConverter;
+use Lesson10DI\ExistingInventory\ExistingInventoryGetter;
+use Lesson10DI\ExistingInventory\ExistingInventoryReader;
+use Lesson10DI\Logging\Logger;
+use Lesson10DI\NewData\DataEnteredSplit;
 use Lesson10DI\ProductAvailabilityApp;
-use Lesson10DI\src\Utils\JsonCoder;
+use Lesson10DI\Utils\JsonCoder;
 
 $split = new DataEnteredSplit();
 
@@ -35,6 +38,28 @@ $logger = new Logger();
 $app = new ProductAvailabilityApp($split, $inventoryGetter, $availability, $logger);
 $app->execute($argv);
 
+//
+//use Lesson10DI-wrong\Containers\Container;
+//use Lesson10DI-wrong\Containers\App;
+//
+//$container = new Container();
+//$container->set(
+//    JsonEncoder::class,
+//    function (Container $container) {
+//        return new JsonEncoder();
+//    }
+//);
+//
+//$container->set(
+//    DataProcessor::class,
+//    function (Container $container) {
+//
+//        return new DataProcessor($container->get(JsonEncoder::class));
+//    }
+//);
+//
+//$app = new App($container->get(DataProcessor::class));
+//$app->run();
 
 /*
 2.1 Parašykite įrankį inventoriaus tikrinimui. Inventorių rasite faile "./inventory.json"

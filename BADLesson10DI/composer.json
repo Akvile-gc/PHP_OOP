@@ -1,0 +1,15 @@
+{
+    "name": "akvile/lessoon10",
+    "autoload": {
+        "psr-4": {
+            "Lessoon10DI\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Akvile-gc",
+            "email": "akvile.gvildyte@gmail.com"
+        }
+    ],
+    "require": {}
+}

@@ -1,21 +1,19 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Lesson10DI\NewData;
 
 class DataEnteredSplit
 {
-    public function explode(string $input): array
+    public function explode(string $input):array
     {
-        if ($input == '') {
+        if ($input == '')
             return [];
-        }
 
         $inputItems = explode(',', $input);
         $enteredData = [];
 
-        foreach ($inputItems as $item) {
+        foreach ($inputItems as $item){
             $unsortedData = explode(':', $item);
             $id = (int)$unsortedData[0];
             $quantity = (int)$unsortedData[1];
@@ -23,7 +21,7 @@ class DataEnteredSplit
             $enteredData[] = $newData;
         }
 
-        return $enteredData;
+    return $enteredData;
     }
 }
 

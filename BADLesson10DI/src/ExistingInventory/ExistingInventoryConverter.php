@@ -1,16 +1,14 @@
 <?php
 
 declare(strict_types=1);
-
 namespace Lesson10DI\ExistingInventory;
-
 class ExistingInventoryConverter
 {
-    public function convert(array $unsortedInventory): array
+    public function convert(array $unsortedInventory):array
     {
         $existingInventory = [];
 
-        foreach ($unsortedInventory as $unsortedItem) {
+        foreach ($unsortedInventory as $unsortedItem){
             $existingInventory[] = new InventoryItem(
                 $unsortedItem['product_id'],
                 $unsortedItem['name'],

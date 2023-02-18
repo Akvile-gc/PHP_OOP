@@ -1,0 +1,10 @@
+{
+    "name": "akvile/lesson10",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Lesson10DI\\": "src/"
+        }
+    },
+    "require": {}
+}
