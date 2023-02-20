@@ -1,0 +1,20 @@
+{
+  "car1": {
+    "registration_id": "0",
+    "manufacturer": "Toyota",
+    "model": "Yaris",
+    "year": "2002"
+  },
+  "car2": {
+    "registration_id": "1",
+    "manufacturer": "Kia",
+    "model": "Red",
+    "year": "2020"
+  },
+  "car3": {
+    "registration_id": "2",
+    "manufacturer": "VW",
+    "model": "Jeta",
+    "year": "2015"
+  }
+}

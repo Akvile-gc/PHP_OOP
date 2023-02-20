@@ -8,6 +8,27 @@
     <title>Document</title>
 </head>
 <body>
+<p>The car, ID <?php ?>, details are:</p>
+<table>
+    <thead>
+    <tr>
+        <td>Registration ID</td>
+        <td>Manufacturer</td>
+        <td>Model</td>
+        <td>Year</td>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($carList as $car):?>
+        <tr>
+            <td><?php echo $car->getRegistrationId() ?></td>
+            <td><?php echo $car->getManufacturer() ?></td>
+            <td><?php echo $car->getModel() ?></td>
+            <td><?php echo $car->getYear() ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
 
 </body>
 </html>

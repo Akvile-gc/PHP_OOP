@@ -1,12 +1,13 @@
 <?php
-
 declare(strict_types=1);
 
-use Lesson11MVC\Containers\DIContainer;
+namespace Lesson11MVC\Framework;
+
+use Lesson11MVC\Framework\DIContainer;
 
 class Router
 {
-    public function __construct(protected \Lesson11MVC\Framework\DIContainer $DIContainer)
+    public function __construct(protected DIContainer $DIContainer)
     {
     }
 
@@ -18,14 +19,17 @@ class Router
             $carController->list();
         } elseif ($path === '/details' && $method === 'GET') {
             $carController->details();
+//            $_SERVER['REQUEST_URI']
         }
     }
 }
 
-/*Realizuojame Router klasę.
+/*
+1.2
+Realizuojame Router klasę.
 Pridėkite metodą:
   process() - nuskaito užklausos URL, metodą (GET/POST/etc.) ir siunčiamus duomenis (pradžioje įgyvendinsime tik GET užklausas be duomenų).
     Toliau pagal adresą ir metodą nusprendžia kurį kontrolerį naudoti ir iškviečia kontrolerio atitinkamą metodą.
 
 Router klasė per konstruktorių reikalauja DIContainer objekto
-Kontroleris turi būti kuriamas ne savarankiškai su 'new' raktažodžiu, o gaunamas iš DIContainer
+Kontroleris turi būti kuriamas ne savarankiškai su 'new' raktažodžiu, o gaunamas iš DIContainer */

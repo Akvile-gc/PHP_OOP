@@ -32,3 +32,15 @@ class Car
         return $this->year;
     }
 }
+
+/*
+1.3
+Papildoma Car klasė
+Pridėkite privačius parametrus:
+  registrationId (string)
+  manufacturer (string)
+  model (string)
+  year (int)
+
+Kadangi parametrai privatūs, duomenims perduoti į išorę aprašykite getter metodus (getRegistrationId, getManufacturer, t.t.)
+ */
