@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lesson11MVC\Controllers;
 
 use Lesson11MVC\Repositories\CarRepository;
+
 class CarController
 {
     public function __construct(protected CarRepository $carRepository)
@@ -14,14 +15,15 @@ class CarController
     public function list():void
     {
         $carList = $this->carRepository->getAll();
-        require "../views/car/list.php";
+        require __DIR__ . "/../../views/car/list.php";
     }
 
     public function details(string $registrationId)
     {
-        $carDetails = $this->carRepository->getByRegistrationId($registrationId);
+//        $carDetails = $this->carRepository->getByRegistrationId($registrationId);
+//        require __DIR__ . "/../../views/car/details.php";
 
-        require "../views/car/details.php";
+//        require "../views/car/details.php";
 
 
 //        if ($registrationId === )

@@ -11,7 +11,7 @@
     <p>List of the cars:</p>
     <table>
         <thead>
-            <tr>
+            <tr style="font-weight: bold">
                 <td>Registration ID</td>
                 <td>Manufacturer</td>
                 <td>Model</td>
@@ -20,6 +20,7 @@
         </thead>
         <tbody>
             <?php foreach ($carList as $car):?>
+
             <tr>
                 <td><?php echo $car->getRegistrationId() ?></td>
                 <td><?php echo $car->getManufacturer() ?></td>

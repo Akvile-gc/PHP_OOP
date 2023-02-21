@@ -1,49 +1,25 @@
 <?php
-
 namespace Lesson11MVC\Framework;
-
+use Exception;
 use ReflectionClass;
-use RuntimeException;
-use ReflectionParameter;
 use ReflectionNamedType;
+use ReflectionParameter;
+use RuntimeException;
 
-/*
---------------------------------
-Iškelkite klases priklausomai nuo jūsų projekto.
-Nepamirškite klasėms pridėti namespace.
-Ištrinkite $container->set() ten, kur konstruktoriai nepriima primityvių duomenų
-(priima objektus arba nereikalauja visai nieko).
---------------------------------
-*/
-
-/**
- * Used internally by Container
- * @see Container
- */
-class ContainerArgumentTypeException extends \Exception
-{
+class ContainerArgumentTypeException extends Exception {
 
     public const ISSUE_NO_TYPE = 'no_type';
     public const ISSUE_NON_NAMED_TYPE = 'non_named_type'; // Is not a simple named type (union or intersection)
     public const ISSUE_PRIMITIVE_TYPE = 'primitive_type';
 
 
-    public function __construct(private string $argumentName, private string $issue)
-    {
-    }
+    public function __construct(private string $argumentName, private string $issue) {}
 
-    public function getArgumentName()
-    {
-        return $this->argumentName;
-    }
+    public function getArgumentName() { return $this->argumentName; }
 
-    public function getIssue(): string
-    {
-        return $this->issue;
-    }
+    public function getIssue(): string { return $this->issue; }
 
-    public static function messageForClass(string $className, ContainerArgumentTypeException $exception)
-    {
+    public static function messageForClass(string $className, ContainerArgumentTypeException $exception) {
         $identifier = "$className::__construct(\${$exception->getArgumentName()})";
 
         switch ($exception->getIssue()) {
@@ -55,19 +31,19 @@ class ContainerArgumentTypeException extends \Exception
                 return "Cannot resolve primitive arguments (use Container::set): $identifier";
         }
     }
+
 }
 
-class PrimitiveTypes
-{
+class PrimitiveTypes {
 
     /**
      * @param string $type Name of type (eg., App, string, bool, MyProject\Service)
      */
-    public static function isPrimitive(string $type)
-    {
+    public static function isPrimitive(string $type) {
         $primitiveTypes = ['int', 'float', 'string', 'bool', 'array', 'object'];
         return in_array($type, $primitiveTypes);
     }
+
 }
 
 class DIContainer
@@ -85,8 +61,7 @@ class DIContainer
         return $resolve($this);
     }
 
-    private function resolve(string $id)
-    {
+    private function resolve(string $id) {
         $refClass = new ReflectionClass($id); // https://www.php.net/manual/en/class.reflectionclass.php
         $refArguments = $this->getConstructorArguments($refClass);
 
@@ -95,7 +70,8 @@ class DIContainer
         foreach ($refArguments as $refArgument) {
             try {
                 $dependencies[] = $this->getFromReflectionArgument($refArgument);
-            } catch (ContainerArgumentTypeException $e) {
+            }
+            catch (ContainerArgumentTypeException $e) {
                 throw new RuntimeException(ContainerArgumentTypeException::messageForClass($id, $e));
             }
         }
@@ -106,8 +82,7 @@ class DIContainer
     /**
      * @return ReflectionParameter[]
      */
-    private function getConstructorArguments(ReflectionClass $refClass): array
-    {
+    private function getConstructorArguments(ReflectionClass $refClass): array {
         $refConstructor = $refClass->getConstructor();
 
         if (!$refConstructor)
@@ -116,8 +91,7 @@ class DIContainer
         return $refConstructor->getParameters();
     }
 
-    private function getFromReflectionArgument(ReflectionParameter $refArgument)
-    {
+    private function getFromReflectionArgument(ReflectionParameter $refArgument) {
         if (!$refArgument->hasType())
             throw new ContainerArgumentTypeException($refArgument->getName(), ContainerArgumentTypeException::ISSUE_NO_TYPE);
 

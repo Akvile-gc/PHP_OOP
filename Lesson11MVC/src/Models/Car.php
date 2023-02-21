@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+namespace Lesson11MVC\Models;
 class Car
 {
     public function __construct(

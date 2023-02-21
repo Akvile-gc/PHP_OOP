@@ -3,22 +3,22 @@ declare(strict_types=1);
 
 namespace Lesson11MVC\Framework;
 
-use Lesson11MVC\Framework\DIContainer;
+use Lesson11MVC\Controllers\CarController;
 
 class Router
 {
-    public function __construct(protected DIContainer $DIContainer)
+    public function __construct(protected DIContainer $container)
     {
     }
 
     public function process(string $path, string $method)
     {
-        $carController = $this->DIContainer->get(CarController::class);
+        $carController = $this->container->get(CarController::class);
 
         if($path === '/list' && $method === 'GET'){
             $carController->list();
-        } elseif ($path === '/details' && $method === 'GET') {
-            $carController->details();
+//        } elseif ($path === '/details' && $method === 'GET') {
+//            $carController->details();
 //            $_SERVER['REQUEST_URI']
         }
     }
